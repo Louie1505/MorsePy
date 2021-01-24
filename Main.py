@@ -4,6 +4,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 from urllib.parse import unquote
 
+def SendToLED(message):
+    print(message)
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)
@@ -72,6 +74,3 @@ if __name__ == '__main__':
         run(port=int(argv[1]))
     else:
         run()
-
-def SendToLED(message):
-    print(message)

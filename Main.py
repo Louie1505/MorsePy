@@ -9,14 +9,14 @@ from time import sleep
 def SendToLED(signal):
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-     # Set pin 8 to be an output pin and set initial value to low (off)
+    # Set pin 8 to be an output pin and set initial value to low (off)
     GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW)
     on = False
 
     for x in signal:
         on = not on
         GPIO.output(8, (GPIO.HIGH if on else GPIO.LOW))
-        sleep(x)
+        sleep(x / 10)
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)

@@ -1,6 +1,6 @@
 class Unit:
     #configurable - length of one 'unit' in seconds
-    Length: int = 1
+    Length: float = 0.1
 
 class Character:
 

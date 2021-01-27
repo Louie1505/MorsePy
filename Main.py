@@ -5,17 +5,20 @@ from Morse import Character, Pause
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import unquote
 from time import sleep
+from sys import argv
+
+pinNum = 8
 
 def SendToLED(signal):
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    # Set pin 8 to be an output pin and set initial value to low (off)
-    GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW)
+    # Set pin to be an output pin and set initial value to low (off)
+    GPIO.setup(pinNum, GPIO.OUT, initial=GPIO.LOW)
     on = False
 
     for x in signal:
         on = not on
-        GPIO.output(8, (GPIO.HIGH if on else GPIO.LOW))
+        GPIO.output(pinNum, (GPIO.HIGH if on else GPIO.LOW))
         sleep(x / 10)
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
@@ -75,9 +78,8 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.info('Stopping httpd...\n')
 
 if __name__ == '__main__':
-    from sys import argv
-
-    if len(argv) == 2:
-        run(port=int(argv[1]))
-    else:
-        run()
+    # Using a relay so turn on pin 8 and send the signal to the next pin over
+    if len(sys.argv) > 0 and sys.argv[0] == "-r"
+        GPIO.output(pinNum, (GPIO.HIGH if on else GPIO.LOW))
+        pinNum = 10
+    run()

@@ -79,7 +79,7 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
 
 if __name__ == '__main__':
     # Using a relay so turn on pin 8 and send the signal to the next pin over
-    if len(sys.argv) > 0 and sys.argv[0] == "-r"
-        GPIO.output(pinNum, (GPIO.HIGH if on else GPIO.LOW))
+    if len(argv) > 0 and argv[0] == "-r":
+        GPIO.output(pinNum, GPIO.HIGH)
         pinNum = 10
     run()
